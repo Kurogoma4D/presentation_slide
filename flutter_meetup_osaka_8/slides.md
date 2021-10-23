@@ -7,301 +7,204 @@ fonts:
   sans: 'Kiwi Maru, Helvetica Neue'
 ---
 
-# Welcome
+# 実践 Overlay
 
-Welcome ようこそ
-
-<!--
-The last comment block of each slide will be treated as slide notes. It will be visible and editable in Presenter Mode along with the slide. [Read more in the docs](https://sli.dev/guide/syntax.html#notes)
--->
+Overlayを使ってみる
 
 ---
 
-# What is Slidev?
+# 誰?
 
-<iframe class="w-full h-full" src="https://dartpad.dev/embed-flutter.html?id=ff4a449f0e9cfbb0b79d6e397d9ce12b&theme=dark&null_safety=true"></iframe>
+<div class="title" >
+  <h3>Kurogoma4D</h3>
+  <img class="w-24 h-24 rounded-3xl" src="https://pbs.twimg.com/profile_images/1289002876430213120/G2A564li_400x400.jpg"/>
+</div>
 
-<!--
-You can have `style` tag in markdown to override the style for the current page.
-Learn more: https://sli.dev/guide/syntax#embedded-styles
--->
+- <span class="text-green-300">Cross-platform Mobile App Engineer</span> on CBcloud株式会社
+- Twitter: @Krgm4D
+- https://scrapbox.io/kurogoma4d-lab/
+
+<div class="mt-20">あんまり役に立たない開発が好きです</div>
 
 <style>
-h1 {
-  background-color: #2B90B6;
-  background-image: linear-gradient(45deg, #4EC5D4 10%, #146b8c 20%);
-  background-size: 100%;
-  -webkit-background-clip: text;
-  -moz-background-clip: text;
-  -webkit-text-fill-color: transparent; 
-  -moz-text-fill-color: transparent;
-  display: none;
-}
-
-</style>
-
----
-
-# Navigation
-
-Hover on the bottom-left corner to see the navigation's controls panel, [learn more](https://sli.dev/guide/navigation.html)
-
-### Keyboard Shortcuts
-
-|     |     |
-| --- | --- |
-| <kbd>right</kbd> / <kbd>space</kbd>| next animation or slide |
-| <kbd>left</kbd>  / <kbd>shift</kbd><kbd>space</kbd> | previous animation or slide |
-| <kbd>up</kbd> | previous slide |
-| <kbd>down</kbd> | next slide |
-
-<!-- https://sli.dev/guide/animations.html#click-animations -->
-<img
-  v-click
-  class="absolute -bottom-9 -left-7 w-80 opacity-50"
-  src="https://sli.dev/assets/arrow-bottom-left.svg"
-/>
-<p v-after class="absolute bottom-23 left-45 opacity-30 transform -rotate-10">Here!</p>
-
----
-layout: image-right
-image: https://source.unsplash.com/collection/94734566/1920x1080
----
-
-# Code
-
-Use code snippets and get the highlighting directly![^1]
-
-```ts {all|2|1-6|9|all}
-interface User {
-  id: number
-  firstName: string
-  lastName: string
-  role: string
-}
-
-function updateUser(id: number, update: User) {
-  const user = getUser(id)
-  const newUser = {...user, ...update}  
-  saveUser(id, newUser)
-}
-```
-
-<arrow v-click="3" x1="400" y1="420" x2="230" y2="330" color="#564" width="3" arrowSize="1" />
-
-[^1]: [Learn More](https://sli.dev/guide/syntax.html#line-highlighting)
-
-<style>
-.footnotes-sep {
-  @apply mt-20 opacity-10;
-}
-.footnotes {
-  @apply text-sm opacity-75;
-}
-.footnote-backref {
-  display: none;
-}
-</style>
-
----
-
-# Components
-
-<div grid="~ cols-2 gap-4">
-<div>
-
-You can use Vue components directly inside your slides.
-
-We have provided a few built-in components like `<Tweet/>` and `<Youtube/>` that you can use directly. And adding your custom components is also super easy.
-
-```html
-<Counter :count="10" />
-```
-
-<!-- ./components/Counter.vue -->
-<Counter :count="10" m="t-4" />
-
-Check out [the guides](https://sli.dev/builtin/components.html) for more.
-
-</div>
-<div>
-
-```html
-<Tweet id="1390115482657726468" />
-```
-
-<Tweet id="1390115482657726468" scale="0.65" />
-
-</div>
-</div>
-
-
----
-class: px-20
----
-
-# Themes
-
-Slidev comes with powerful theming support. Themes can provide styles, layouts, components, or even configurations for tools. Switching between themes by just **one edit** in your frontmatter:
-
-<div grid="~ cols-2 gap-2" m="-t-2">
-
-```yaml
----
-theme: default
----
-```
-
-```yaml
----
-theme: seriph
----
-```
-
-<img border="rounded" src="https://github.com/slidevjs/themes/blob/main/screenshots/theme-default/01.png?raw=true">
-
-<img border="rounded" src="https://github.com/slidevjs/themes/blob/main/screenshots/theme-seriph/01.png?raw=true">
-
-</div>
-
-Read more about [How to use a theme](https://sli.dev/themes/use.html) and
-check out the [Awesome Themes Gallery](https://sli.dev/themes/gallery.html).
-
----
-preload: false
----
-
-# Animations
-
-Animations are powered by [@vueuse/motion](https://motion.vueuse.org/).
-
-```html
-<div
-  v-motion
-  :initial="{ x: -80 }"
-  :enter="{ x: 0 }">
-  Slidev
-</div>
-```
-
-<div class="w-60 relative mt-6">
-  <div class="relative w-40 h-40">
-    <img
-      v-motion
-      :initial="{ x: 800, y: -100, scale: 1.5, rotate: -50 }"
-      :enter="final"
-      class="absolute top-0 left-0 right-0 bottom-0"
-      src="https://sli.dev/logo-square.png"
-    />
-    <img
-      v-motion
-      :initial="{ y: 500, x: -100, scale: 2 }"
-      :enter="final"
-      class="absolute top-0 left-0 right-0 bottom-0"
-      src="https://sli.dev/logo-circle.png"
-    />
-    <img
-      v-motion
-      :initial="{ x: 600, y: 400, scale: 2, rotate: 100 }"
-      :enter="final"
-      class="absolute top-0 left-0 right-0 bottom-0"
-      src="https://sli.dev/logo-triangle.png"
-    />
-  </div>
-
-  <div 
-    class="text-5xl absolute top-14 left-40 text-[#2B90B6] -z-1"
-    v-motion
-    :initial="{ x: -80, opacity: 0}"
-    :enter="{ x: 0, opacity: 1, transition: { delay: 2000, duration: 1000 } }">
-    Slidev
-  </div>
-</div>
-
-<!-- vue script setup scripts can be directly used in markdown, and will only affects current page -->
-<script setup lang="ts">
-const final = {
-  x: 0,
-  y: 0,
-  rotate: 0,
-  scale: 1,
-  transition: {
-    type: 'spring',
-    damping: 10,
-    stiffness: 20,
-    mass: 2
+  h3 {
+    line-height: 4em !important;
   }
-}
-</script>
 
-<div
-  v-motion
-  :initial="{ x:35, y: 40, opacity: 0}"
-  :enter="{ y: 0, opacity: 1, transition: { delay: 3500 } }">
+  li {
+    line-height: 2.5em !important;
+  }
 
-[Learn More](https://sli.dev/guide/animations.html#motion)
-
-</div>
-
----
-
-# LaTeX
-
-LaTeX is supported out-of-box powered by [KaTeX](https://katex.org/).
-
-<br>
-
-Inline $\sqrt{3x-1}+(1+x)^2$
-
-Block
-$$
-\begin{array}{c}
-
-\nabla \times \vec{\mathbf{B}} -\, \frac1c\, \frac{\partial\vec{\mathbf{E}}}{\partial t} &
-= \frac{4\pi}{c}\vec{\mathbf{j}}    \nabla \cdot \vec{\mathbf{E}} & = 4 \pi \rho \\
-
-\nabla \times \vec{\mathbf{E}}\, +\, \frac1c\, \frac{\partial\vec{\mathbf{B}}}{\partial t} & = \vec{\mathbf{0}} \\
-
-\nabla \cdot \vec{\mathbf{B}} & = 0
-
-\end{array}
-$$
-
-<br>
-
-[Learn more](https://sli.dev/guide/syntax#latex)
-
----
-
-# Diagrams
-
-You can create diagrams / graphs from textual descriptions, directly in your Markdown.
-
-<div class="grid grid-cols-2 gap-10 pt-4 -mb-6">
-
-```mermaid {scale: 0.9}
-sequenceDiagram
-    Alice->John: Hello John, how are you?
-    Note over Alice,John: A typical interaction
-```
-
-```mermaid {theme: 'neutral', scale: 0.8}
-graph TD
-B[Text] --> C{Decision}
-C -->|One| D[Result 1]
-C -->|Two| E[Result 2]
-```
-
-</div>
-
-[Learn More](https://sli.dev/guide/syntax.html#diagrams)
-
+  .title {
+    display: flex;
+    justify-content: space-between;
+  }
+</style>
 
 ---
 layout: center
-class: text-center
 ---
 
-# Learn More
+# Overlay
 
-[Documentations](https://sli.dev) · [GitHub](https://github.com/slidevjs/slidev) · [Showcases](https://sli.dev/showcases.html)
+---
+
+<div grid="~ cols-2">
+  <div>
+    <p>package:in_app_notification</p>
+    <Tweet id="1401858448170512388" scale="0.7"/>
+  </div>
+
+  <div>
+    <p>Fleet風エディタ</p>
+    <Tweet id="1424027276358733824" scale="0.6"/>
+  </div>
+</div>
+
+
+---
+
+# Overlayって何なんだ
+
+#### 要するに
+`WidgetsApp` で普段操作するUIの<span class="text-red-300">手前側にWidgetを表示する仕組み</span>
+
+<style>
+  h4 {
+    margin-top: 4em !important;
+  }
+</style>
+
+---
+
+# 使い方
+
+```dart {all|8-14|15|7|all}
+class _ContentsState extends State<Contents> {
+  OverlayEntry? entry;
+  final random = math.Random();
+
+  void tapped() {
+    final percentage = random.nextInt(100);
+    entry?.remove();
+    entry = OverlayEntry(
+      builder: (context) => Positioned(
+        top: 32,
+        left: MediaQuery.of(context).size.width * percentage / 100,
+        child: Material(child: Text('$percentage')),
+      ),
+    );
+    Navigator.of(context).overlay?.insert(entry!);
+  }
+
+  @override
+  Widget build(BuildContext context) {
+    // ボタンをタップして `tapped()` を呼び出すコード
+  }
+}
+```
+
+---
+
+<iframe class="w-full h-full" src="https://dartpad.dev/embed-flutter.html?id=9527ad28dea871287beec45371c1557c&theme=dark&null_safety=true"></iframe>
+
+---
+
+# 外から状態を変更する
+
+```dart {all|3|9-13}
+class _ContentsState extends State<Contents> {
+  OverlayEntry? entry;
+  Offset mouse = Offset.zero;
+
+  // ...
+
+  @override
+  Widget build(BuildContext context) {
+    return MouseRegion(
+      onHover: (event) {
+        setState(() => mouse = event.localPosition);
+        entry?.markNeedsBuild();
+      },
+      child: Scaffold(
+        // ...
+      ),
+    );
+  }
+}
+```
+
+---
+
+<iframe class="w-full h-full" src="https://dartpad.dev/embed-flutter.html?id=f1523f90cc2526c525b39e9fd62557f5&theme=dark&null_safety=true"></iframe>
+
+---
+
+# まとめ
+
+- Overlayを使うには、`OverlayEntry` を生成して `Navigator` 経由で表示する
+- `OverlayEntry` の `builder` 直下には `Positioned` を置くことができる
+  - 位置やサイズの調整が可能
+- 削除するには `remove()` メソッドを呼び出す
+- Overlayの外から状態を更新するには、`markNeedsBuild()` メソッドを呼び出す
+
+<style>
+  li {
+    line-height: 2.5em !important;
+  }
+
+  code {
+    color: #FFE082;
+  }
+</style>
+
+---
+layout: two-cols
+---
+
+# ちなみに
+
+#### https://pub.dev/packages/flutter_portal
+
+<div class="mt-8">Provider/Riverpodで有名なRemi氏のパッケージ</div>
+<p>Overlayを宣言的に扱うことができる</p>
+
+`Positioned` を挟むことができなかったので `MouseRegion` の例は再現できず😢
+
+::right::
+
+```dart
+class _ContentsState extends State<Contents> {
+  final random = math.Random();
+  int percentage = 0;
+  bool showingOverlay = false;
+
+  void tapped() => setState(() {
+        percentage = random.nextInt(100);
+        showingOverlay = true;
+      });
+
+  @override
+  Widget build(BuildContext context) {
+    return PortalEntry(
+      visible: showingOverlay,
+      childAnchor: Alignment.topCenter,
+      portalAnchor: Alignment.topCenter,
+      portal: Material(child: Text('$percentage')),
+      child: Scaffold(
+        body: // ...
+      ),
+    );
+  }
+}
+```
+
+<style>
+  h4 {
+    margin-top: 4em !important;
+  }
+
+  code {
+    color: #FFE082;
+  }
+</style>
