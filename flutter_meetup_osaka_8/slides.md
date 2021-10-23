@@ -21,6 +21,7 @@ Overlayを使ってみる
 </div>
 
 - <span class="text-green-300">Cross-platform Mobile App Engineer</span> on CBcloud株式会社
+  - [We are hiring!!](https://recruit.cb-cloud.com/)
 - Twitter: @Krgm4D
 - https://scrapbox.io/kurogoma4d-lab/
 
