@@ -1,0 +1,39 @@
+@import url("https://fonts.googleapis.com/css2?family=Kiwi+Maru:wght@400;500&display=swap");
+
+:root {
+  --slidev-theme-primary: #5d8392;
+  font-family: "Kiwi Maru", "Noto Sans CJK JP", "Roboto", serif;
+}
+
+.slidev-layout.cover,
+.slidev-layout.intro {
+  @apply h-full grid;
+
+  h1 {
+    @apply text-6xl leading-20;
+  }
+
+  h1 + p {
+    @apply -mt-2 opacity-50 mb-4;
+  }
+
+  p + h2,
+  ul + h2,
+  table + h2 {
+    @apply mt-10;
+  }
+}
+
+.slidev-layout.default {
+  li {
+    line-height: 2.5rem;
+  }
+
+  strong {
+    @apply text-red-300;
+  }
+
+  code {
+    @apply text-yellow-200;
+  }
+}
