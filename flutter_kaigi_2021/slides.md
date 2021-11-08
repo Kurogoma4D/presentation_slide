@@ -41,12 +41,72 @@ The magic of combination of dart and platform.
 - プラットフォームとDartコードの連携
 
 ---
+layout: center
+---
 
 # Flutterの仕組み
 
-- プラットフォームからDart VMを起動するアレコレ
+---
+
+# Flutterの仕組み
+
+<img class="mx-auto my-0" width="450" alt="architecture" src="/images/archdiagram.png" />
+
+https://flutter.dev/docs/resources/architectural-overview#architectural-layers
 
 ---
+
+# Flutterの仕組み
+
+既存のネイティブアプリにFlutterを組み込むAdd-to-App
+
+```kotlin{all|5-12}
+class MyApplication : Application() {
+  lateinit var flutterEngine : FlutterEngine
+  override fun onCreate() {
+    super.onCreate()
+    // Instantiate a FlutterEngine.
+    flutterEngine = FlutterEngine(this)
+    // Configure an initial route.
+    flutterEngine.navigationChannel.setInitialRoute("your/route/here");
+    // Start executing Dart code to pre-warm the FlutterEngine.
+    flutterEngine.dartExecutor.executeDartEntrypoint(
+      DartExecutor.DartEntrypoint.createDefault()
+    )
+    // Cache the FlutterEngine to be used by FlutterActivity or FlutterFragment.
+    FlutterEngineCache
+      .getInstance()
+      .put("my_engine_id", flutterEngine)
+  }
+}
+```
+
+[Androidでのコード例](https://flutter.dev/docs/development/add-to-app/android/add-flutter-screen#initial-route-with-a-cached-engine)
+
+---
+layout: two-cols
+---
+# Flutterの仕組み
+
+<div class="mt-32">Embedderに用意された</div>
+<p>Flutterを起動するためのクラス</p>
+
+<Gap :size="16"/>
+
+<a style="word-wrap: break-word;" href="https://api.flutter.dev/javadoc/io/flutter/embedding/engine/dart/DartExecutor.html#executeDartCallback-io.flutter.embedding.engine.dart.DartExecutor.DartCallback-">https://api.flutter.dev/javadoc/io/flutter/embedding/engine/dart/DartExecutor.html#executeDartCallback-io.flutter.embedding.engine.dart.DartExecutor.DartCallback-</a>
+
+::right::
+
+<img style="margin: auto 0 auto 32px; object-fit: contain; height: 100%;" alt="Dart Executer" src="/images/dart_executer.png" />
+
+---
+layout: center
+---
+
+# Isolate
+
+---
+
 
 # Isolate
 
@@ -59,6 +119,12 @@ The magic of combination of dart and platform.
   - 重要なこと
     - main isolateとそれ以外のisolateがある
     - isolateのエントリーポイントはtop-level functionかstatic method
+
+---
+layout: center
+---
+
+# ネイティブとの連携
 
 ---
 
