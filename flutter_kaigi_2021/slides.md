@@ -32,13 +32,28 @@ The magic of combination of dart and platform.
 あんまり役に立たない開発が好きです
 
 ---
+layout: center
+---
 
-# なんか導入
+# バックグラウンド実行を理解すると
+<Gap :size="60"/>
 
-バックグラウンド実行を理解するのに必要な概念
-- Dart VMの起動
-- Isolate
-- プラットフォームとDartコードの連携
+<div class="flex space-x-4">
+  <span class="p-8 border-green-600 border-4 bg-green-400 text-gray-900 rounded-2xl">プラグインが作れる</span>
+  <span class="p-8 border-green-600 border-4 bg-green-400 text-gray-900 rounded-2xl">巷のプラグインの理解が進む</span>
+  <span class="p-8 border-red-600 border-4 bg-red-400 text-gray-900 rounded-2xl">たのしい</span>
+</div>
+
+---
+
+# バックグラウンド実行を理解するのに必要な概念
+
+1. Flutterの仕組み
+   - Flutterはどのように起動するのか
+2. Isolate
+   - Isolateの概念
+   - サンプルコード
+3. プラットフォームとDartコードの連携
 
 ---
 layout: center
@@ -106,19 +121,50 @@ layout: center
 # Isolate
 
 ---
-
+layout: two-cols
+---
 
 # Isolate
 
-- 簡単なサンプル
-- Isolateとは
-  - 並列処理ができる
-  - （ただし厳密にプラットフォームの別スレッドを使うわけではない）
-  - mainとのメモリ共有はできない
-  - 感覚としてはスレッドだがどちらかというとプロセスっぽい
-  - 重要なこと
-    - main isolateとそれ以外のisolateがある
-    - isolateのエントリーポイントはtop-level functionかstatic method
+並列処理ができる仕組み
+
+```dart{all|13|16-20}
+import 'dart:isolate';
+
+/// Root Isolate
+void main() {
+  final receivePort = ReceivePort();
+  final sendPort    = receivePort.sendPort;
+
+  receivePort.listen((message) {
+    print(message);
+    receivePort.close();
+  });
+
+  await Isolate.spawn(anotherMain, sendPort);
+}
+
+/// Child Isolate
+/// top-level function or static method
+void anotherMain() {
+  print('Hello from anotherMain!');
+}
+```
+
+::right::
+
+<Gap :size="80" />
+
+- `main()` もIsolate
+  - Root Isolate
+- **Isolate間でメモリ共有はできない**
+  - 通信手段はある
+- Child Isolateとして実行できる関数
+  - トップレベル関数
+  - 任意のクラスの static メソッド
+  - つまり**メモリから見て静的な関数**
+
+詳しくは [monoさんの記事](https://medium.com/flutter-jp/isolate-a3f6eab488b5) がわかりやすいです
 
 ---
 layout: center
