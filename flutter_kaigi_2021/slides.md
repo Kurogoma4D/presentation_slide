@@ -173,13 +173,25 @@ layout: center
 # ネイティブとの連携
 
 ---
+layout: two-cols
+---
 
 # ネイティブとの連携
 
-- MethodChannel
-- Dart → Platform
-- Platform → Dart
+とても分かりやすい公式ドキュメント
 
+https://flutter.dev/docs/development/platform-integration/platform-channels
+
+基本的にやることは
+
+1. `MethodChannel` を名前付きでインスタンス化
+1. `invokeMethod()` メソッドを呼ぶ
+   - 引数でメソッド名、任意のデータ（引数）を渡す
+2. `setMethodCallHandler()` を使ってメソッド呼び出しを検知する
+
+::right::
+
+<img style="margin: auto 0 auto 32px; object-fit: contain; height: 100%;" alt="Dart Executer" src="/images/platform_channels.png" />
 ---
 
 # バックグラウンド実行
