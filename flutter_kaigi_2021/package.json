@@ -1,7 +1,7 @@
 {
   "private": true,
   "scripts": {
-    "build": "slidev build",
+    "build": "sh -c 'cd ../simple_dark_theme && npm install'; slidev build",
     "dev": "slidev --open",
     "export": "slidev export"
   },
