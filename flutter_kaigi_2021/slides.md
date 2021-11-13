@@ -493,7 +493,7 @@ class IsolateHolderService : Service(), MethodChannel.MethodCallHandler {
         mBackgroundChannel = MethodChannel(..., "dev.krgm4d/timer_manager_background")
         mBackgroundChannel.setMethodCallHandler(this)
     }
-
+}
 ```
 
 ---
@@ -600,4 +600,5 @@ Dartコードをバックグラウンド実行するためには
   - [Adding a Flutter screen to an Android app](https://flutter.dev/docs/development/add-to-app/android/add-flutter-screen?tab=cached-engine-with-initial-route-kotlin-tab#initial-route-with-a-cached-engine)
   - [Writing custom platform-specific code](https://flutter.dev/docs/development/platform-integration/platform-channels)
 - おまけ
+  - [FlutterでIsolateを用いた並列処理をするべきシーンとそのやり方](https://medium.com/flutter-jp/isolate-a3f6eab488b5)
   - [flutter_isolateは何をしているのか](https://www.rm48.net/post/flutter_isolate%E3%81%AF%E4%BD%95%E3%82%92%E3%81%97%E3%81%A6%E3%81%84%E3%82%8B%E3%81%AE%E3%81%8B)
