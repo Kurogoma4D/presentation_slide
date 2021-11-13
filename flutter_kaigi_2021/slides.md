@@ -1,5 +1,5 @@
 ---
-theme: ../simple_dark_theme
+theme: simple_dark_theme
 highlighter: shiki
 # show line numbers in code blocks
 lineNumbers: false
