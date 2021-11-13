@@ -4,7 +4,7 @@
 [build]
   publish = "dist"
   command = "npm run build"
-  ignore = "git diff --quiet $CACHED_COMMIT_REF..$COMMIT_REF ."
+  ignore = "git diff --exit-code --quiet $CACHED_COMMIT_REF $COMMIT_REF . ./simple_dark_theme/"
 
 
 [[redirects]]
