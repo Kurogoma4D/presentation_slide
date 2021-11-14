@@ -350,51 +350,6 @@ layout: pip
 image: /images/background_execution_all.svg
 ---
 
-callback_dispatcher.dart
-```dart
-void callbackDispatcher() {
-  const _backgroundChannel =
-      MethodChannel('dev.krgm4d/timer_manager_background');
-  WidgetsFlutterBinding.ensureInitialized();
-  ...
-}
-```
-
----
-layout: pip
-image: /images/background_execution_all.svg
----
-
-callback_dispatcher.dart
-```dart
-void callbackDispatcher() {
-  ...
-  _backgroundChannel.setMethodCallHandler((call) async {
-    final List<dynamic> args = call.arguments;
-
-    // バックグラウンドで実行する任意のDartコードのアドレスを取得
-    // （図では [A] ）
-    final callback = PluginUtilities.getCallbackFromHandle(
-      CallbackHandle.fromRawHandle(args[0]),
-    );
-
-    // バックグランドでカウントした数値を取得
-    final time = args[1] as int;
-
-    // [A] を実行
-    callback(time);
-  });
-
-  // 初期化が完了したことをプラットフォーム側に通知する
-  _backgroundChannel.invokeMethod('TimerService.initialized');
-}
-```
-
----
-layout: pip
-image: /images/background_execution_all.svg
----
-
 timer_manager.dart
 ```dart{all|12-19}
 class TimerManager {
@@ -527,6 +482,52 @@ class IsolateHolderService : Service(), MethodChannel.MethodCallHandler {
     }
 }
 ```
+
+---
+layout: pip
+image: /images/background_execution_all.svg
+---
+
+callback_dispatcher.dart
+```dart
+void callbackDispatcher() {
+  const _backgroundChannel =
+      MethodChannel('dev.krgm4d/timer_manager_background');
+  WidgetsFlutterBinding.ensureInitialized();
+  ...
+}
+```
+
+---
+layout: pip
+image: /images/background_execution_all.svg
+---
+
+callback_dispatcher.dart
+```dart
+void callbackDispatcher() {
+  ...
+  _backgroundChannel.setMethodCallHandler((call) async {
+    final List<dynamic> args = call.arguments;
+
+    // バックグラウンドで実行する任意のDartコードのアドレスを取得
+    // （図では [A] ）
+    final callback = PluginUtilities.getCallbackFromHandle(
+      CallbackHandle.fromRawHandle(args[0]),
+    );
+
+    // バックグランドでカウントした数値を取得
+    final time = args[1] as int;
+
+    // [A] を実行
+    callback(time);
+  });
+
+  // 初期化が完了したことをプラットフォーム側に通知する
+  _backgroundChannel.invokeMethod('TimerService.initialized');
+}
+```
+
 
 ---
 layout: pip
