@@ -32,6 +32,21 @@ The magic of combination of dart and platform.
 あんまり役に立たない開発が好きです
 
 ---
+
+# Dartコードのバックグラウンド実行
+
+任意のコードをバックグラウンドで実行することができるパッケージの一例
+
+- <span class="text-green-300">workmanager</span> https://pub.dev/packages/workmanager
+  - Android WorkManager のラッパー
+- <span class="text-green-300">background_locator</span> https://pub.dev/packages/background_locator
+  - フォアグラウンド・バックグラウンドで位置情報の継続的な取得ができる
+- <span class="text-green-300">flutter_isolate</span> https://pub.dev/packages/flutter_isolate
+  - 後述する Isolate を実現する
+  - Isolate 自体は Pure Dart でもできるが、普通に使うとプラットフォーム固有の処理をつかった plugin が使えない
+    - このパッケージは plugin が使える Isolate を扱う
+
+---
 layout: center
 ---
 
