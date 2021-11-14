@@ -62,8 +62,18 @@ layout: center
 # Flutterの仕組み
 
 ---
+layout: two-cols
+---
 
 # Flutterの仕組み
+
+<Gap :size="80"/>
+
+Framework / Engine / Embedder の3層
+
+今回出てくるAPIは主にEmbedder
+
+::right::
 
 <img class="mx-auto my-0" width="450" alt="architecture" src="/images/archdiagram.png" />
 
@@ -73,7 +83,7 @@ https://flutter.dev/docs/resources/architectural-overview#architectural-layers
 
 # Flutterの仕組み
 
-既存のネイティブアプリにFlutterを組み込むAdd-to-App
+既存のネイティブアプリにFlutterを組み込むAdd-to-App ([Androidでのコード例](https://flutter.dev/docs/development/add-to-app/android/add-flutter-screen#initial-route-with-a-cached-engine))
 
 ```kotlin{all|5-12}
 class MyApplication : Application() {
@@ -89,14 +99,9 @@ class MyApplication : Application() {
       DartExecutor.DartEntrypoint.createDefault()
     )
     // Cache the FlutterEngine to be used by FlutterActivity or FlutterFragment.
-    FlutterEngineCache
-      .getInstance()
-      .put("my_engine_id", flutterEngine)
   }
 }
 ```
-
-[Androidでのコード例](https://flutter.dev/docs/development/add-to-app/android/add-flutter-screen#initial-route-with-a-cached-engine)
 
 ---
 layout: two-cols
@@ -128,19 +133,11 @@ layout: two-cols
 
 並列処理ができる仕組み
 
-```dart{all|13|16-20}
+```dart{all|5|8-12}
 import 'dart:isolate';
 
 /// Root Isolate
 void main() {
-  final receivePort = ReceivePort();
-  final sendPort    = receivePort.sendPort;
-
-  receivePort.listen((message) {
-    print(message);
-    receivePort.close();
-  });
-
   await Isolate.spawn(anotherMain, sendPort);
 }
 
@@ -241,10 +238,9 @@ class _MyHomePageState extends State<MyHomePage> {
       onPressed: () => TimerManager.stopTimer(),
         child: const Text('Stop'),
     ),
-
-...
-
-void timerCallback(int time) => debugPrint('time: $time');
+    ...
+  }
+}
 
 ```
 
@@ -274,9 +270,6 @@ class TimerManager {
       [handle.toRawHandle()],
     );
   }
-
-  static Future<bool> stopTimer() async =>
-      await _channel.invokeMethod('TimerManager.stopTimer');
 }
 
 ```
@@ -347,7 +340,19 @@ void callbackDispatcher() {
   const _backgroundChannel =
       MethodChannel('dev.krgm4d/timer_manager_background');
   WidgetsFlutterBinding.ensureInitialized();
+  ...
+}
+```
 
+---
+layout: pip
+image: /images/background_execution_all.svg
+---
+
+callback_dispatcher.dart
+```dart
+void callbackDispatcher() {
+  ...
   _backgroundChannel.setMethodCallHandler((call) async {
     final List<dynamic> args = call.arguments;
 
@@ -395,9 +400,6 @@ class TimerManager {
       [handle.toRawHandle()],
     );
   }
-
-  static Future<bool> stopTimer() async =>
-      await _channel.invokeMethod('TimerManager.stopTimer');
 }
 
 ```
@@ -480,7 +482,21 @@ class IsolateHolderService : Service(), MethodChannel.MethodCallHandler {
         // CallbackDispatcherのアドレスからコールバック情報を取得する
         val callbackInfo =
             FlutterCallbackInformation.lookupCallbackInformation(callbackHandle)
+        ...
+    }
+}
+```
 
+---
+
+IsolateHolderService.kt
+```kotlin
+class IsolateHolderService : Service(), MethodChannel.MethodCallHandler {
+    private lateinit var mBackgroundChannel: MethodChannel
+
+    // onCreate から呼ばれる
+    private fun startIsolateHolderService(context: Context) {
+        ...
         // CallbackDispatcherをエントリーポイントとして Flutter Engine を起動
         sBackgroundFlutterEngine = FlutterEngine(context)
         sBackgroundFlutterEngine!!.dartExecutor.executeDartCallback(DartExecutor.DartCallback(
@@ -510,7 +526,21 @@ IsolateHolderService.kt
     // [A] のアドレスを取得
     callbackHandle = this.getSharedPreferences(MainActivity.SHARED_PREFERENCES_KEY, Context.MODE_PRIVATE)
         .getLong(MainActivity.CALLBACK_HANDLE_KEY, 0)
+    ...
+  }
 
+```
+
+---
+layout: pip
+image: /images/background_execution_all.svg
+---
+
+IsolateHolderService.kt
+```kotlin
+  // Foreground Serviceを起動させたときに呼ばれる
+  override fun onStartCommand(intent: Intent?, flags: Int, startId: Int): Int {
+    ...
     runnableTask = object : Runnable {
         var count = 0
         override fun run() {
@@ -536,12 +566,9 @@ image: /images/background_execution_all.svg
 ---
 
 callback_dispatcher.dart
-```dart{6-20}
+```dart
 void callbackDispatcher() {
-  const _backgroundChannel =
-      MethodChannel('dev.krgm4d/timer_manager_background');
-  WidgetsFlutterBinding.ensureInitialized();
-
+  ...
   _backgroundChannel.setMethodCallHandler((call) async {
     final List<dynamic> args = call.arguments;
 
@@ -557,9 +584,7 @@ void callbackDispatcher() {
     // [A] を実行
     callback(time);
   });
-
-  // 初期化が完了したことをプラットフォーム側に通知する
-  _backgroundChannel.invokeMethod('TimerService.initialized');
+  ...
 }
 ```
 
