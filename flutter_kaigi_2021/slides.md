@@ -92,6 +92,8 @@ Framework / Engine / Embedder の3層
 
 <img class="mx-auto my-0" width="450" alt="architecture" src="/images/archdiagram.png" />
 
+<p style="margin: 0 auto;" class="leading-none text-xs">"Architectural diagram" by Flutter official is licensed under CC BY 4.0</p>
+
 https://flutter.dev/docs/resources/architectural-overview#architectural-layers
 
 ---
@@ -203,7 +205,9 @@ https://flutter.dev/docs/development/platform-integration/platform-channels
 
 ::right::
 
-<img style="margin: auto 0 auto 32px; object-fit: contain; height: 100%;" alt="Dart Executer" src="/images/platform_channels.png" />
+<img style="margin: auto 0 auto 32px; object-fit: contain; height: 90%;" alt="Dart Executer" src="/images/platform_channels.png" />
+<p style="margin: auto -16px auto 0;" class="leading-none text-xs text-right">"Architectural diagram" by Flutter official is licensed under CC BY 4.0</p>
+
 ---
 layout: center
 ---
