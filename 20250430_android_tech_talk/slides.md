@@ -1,5 +1,5 @@
 ---
-theme: seriph
+theme: dracula
 background: https://source.unsplash.com/collection/94734566/1920x1080
 title: Foldable端末で最強のメモ環境を作りたい
 info: |
@@ -8,7 +8,7 @@ info: |
 class: text-center
 drawings:
   persist: false
-transition: slide-left
+transition: fade-out
 mdc: true
 ---
 
@@ -66,3 +66,76 @@ transition: fade-out
 <!--
 Pixel 9 Pro Foldは折りたたみ式の大画面を活かせるアプリを作るのに最適なデバイスです。
 -->
+
+---
+transition: fade-out
+image: ./images/specs.png
+layout: image-right
+backgroundSize: contain
+---
+
+# やってみる
+
+最初は仕様を.mdで書き出す
+
+↓
+
+コード生成
+
+環境はVS Code Insiders + GitHub Copilot Agent
+
+<!--
+基本的な機能を説明するスライドです。
+-->
+
+---
+transition: fade-out
+layout: image
+backgroundSize: contain
+---
+
+# ビルド結果
+
+動画を貼る
+
+---
+transition: fade-out
+layout: center
+class: text-center
+---
+
+# Foldable対応
+
+<div class="grid grid-cols-2 gap-12 mt-8">
+  <div class="border-2 p-6 rounded-lg shadow-md">
+    <div class="text-center font-bold text-xl mb-4">閉じた状態</div>
+    <div class="bg-blue-100 p-4 rounded-lg text-gray-800">
+      <div class="text-xl font-bold mb-2">1カラム構成</div>
+      <div class="text-lg mt-4">スワイプでエディタ⇔プレビュー切替</div>
+    </div>
+  </div>
+  
+  <div class="border-2 p-6 rounded-lg shadow-md">
+    <div class="text-center font-bold text-xl mb-4">開いた状態</div>
+    <div class="bg-green-100 p-4 rounded-lg text-gray-800">
+      <div class="text-xl font-bold mb-2">2カラム構成</div>
+      <div class="text-lg">エディタとプレビューを並べて表示</div>
+      <div class="text-lg mt-2">左右のカラムは入れ替え可能</div>
+    </div>
+  </div>
+</div>
+
+---
+transition: fade-out
+---
+
+# どうすればいいか
+
+```kotlin
+val windowSizeClass = currentWindowAdaptiveInfo().windowSizeClass
+val isOpened = windowSizeClass.isWidthAtLeastBreakpoint(WindowSizeClass.WIDTH_DP_MEDIUM_LOWER_BOUND)
+```
+
+https://developer.android.com/develop/ui/compose/layouts/adaptive?hl=ja
+
+これを追加して、Composableを出し分ける
