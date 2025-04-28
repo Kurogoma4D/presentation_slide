@@ -5,7 +5,6 @@ title: Foldable端末で最強のメモ環境を作りたい
 info: |
   ## Android Tech Talk 2025
   LT session about creating the ultimate note-taking environment on foldable Android devices.
-class: text-center
 drawings:
   persist: false
 transition: fade-out
@@ -14,7 +13,14 @@ mdc: true
 
 # Foldable端末で最強のメモ環境を作りたい
 
-Kurogoma4D
+### Kurogoma4D
+
+@ Sansan×DMM.com Android Tech Talk
+
+<div class="flex items-center mt-12">
+  <img class="h-20 rounded-xl" src="./images/kurogoma_chan_2.webp" />
+  <span class="ml-12">X: @Krgm4D</span>
+</div>
 
 <div class="abs-br m-6 flex gap-2">
   <a href="https://github.com/Kurogoma4D" target="_blank" alt="GitHub"
@@ -23,10 +29,17 @@ Kurogoma4D
   </a>
 </div>
 
-<!--
-発表者向けのメモ: 
-このプレゼンテーションでは、Foldable端末の特性を活かした最強のメモ環境についてお話しします。
--->
+---
+
+# 伝えたいこと
+
+- Foldable対応を考える時、まずはAdaptive Layoutの検討をしよう
+- Foldable端末の画面状態を取得できるAPIがある
+  - 必要なら活用しよう
+  - （触れてないけど、半開きの状態か開いている状態か、とかも取得できる）
+- 端末を開いた状態でサブディスプレイのみを使う事ができる
+  - 両方の画面を使うこともできる
+- 画面回転を考慮しよう
 
 ---
 transition: fade-out
@@ -84,19 +97,33 @@ backgroundSize: contain
 
 環境はVS Code Insiders + GitHub Copilot Agent
 
+↓
+
+ちょっと手直し
+
+（最初プレビューがWebViewだったのでAnnotatedStringを使ってTextに置き換えるなどした）
+
 <!--
 基本的な機能を説明するスライドです。
 -->
 
 ---
 transition: fade-out
-layout: image
-backgroundSize: contain
 ---
 
 # ビルド結果
 
-動画を貼る
+<div class="flex justify-center">
+  <div class="flex-1">
+    <img class="h-100" src="./images/first_editor.png" />
+  </div>
+  <div class="flex-1">
+    <img class="h-100" src="./images/first_preview.png" />
+  </div>
+  <div class="flex-2 flex justify-center">
+    <img class="h-100" src="./images/first_editor_open.png" />
+  </div>
+</div>
 
 ---
 transition: fade-out
@@ -126,8 +153,6 @@ class: text-center
 </div>
 
 ---
-transition: fade-out
----
 
 # どうすればいいか
 
@@ -139,3 +164,206 @@ val isOpened = windowSizeClass.isWidthAtLeastBreakpoint(WindowSizeClass.WIDTH_DP
 https://developer.android.com/develop/ui/compose/layouts/adaptive?hl=ja
 
 これを追加して、Composableを出し分ける
+
+```kotlin
+if (isOpened) {
+    Row(...) {
+        Column(modifier = Modifier.weight(1f)) {
+            EditorScreen(viewModel.markdownText, viewModel::onMarkdownTextChange)
+        }
+        Column(modifier = Modifier.weight(1f)) {
+            PreviewScreen(viewModel.parsedHtml)
+        }
+    }
+} else {
+    HorizontalPager(
+        ...
+    ) ...
+}
+```
+
+---
+layout: two-cols
+---
+
+# どうなるか
+
+<img class="h-100" src="./images/adaptive_layout.png" />
+
+::right::
+
+# &emsp;
+
+Adaptive Layoutにより画面サイズが変わったらそれに応じて変化する
+
+Foldable端末を想定した端末の状態を取得するAPIもある
+https://developer.android.com/develop/ui/compose/layouts/adaptive/foldables/make-your-app-fold-aware
+
+> The WindowInfoTracker interface in Jetpack WindowManager exposes window layout information. The interface's windowLayoutInfo() method returns a stream of WindowLayoutInfo data that informs your app about a foldable device's fold state. The WindowInfoTracker#getOrCreate() method creates an instance of WindowInfoTracker.
+
+今回のような要件では、Adaptive Layoutのほうがタブレット等他の環境も考慮できていてベター
+
+---
+
+# Foldable特有の対応をしてみる
+
+<div class="flex justify-content">
+  <div class="w-100 justify-content flex-1 text-center">
+    <img class="rounded-md mb" src="./images/tent.webp" />
+    こうしたい時があるかもしれないし
+  </div>
+  <div class="w-100 justify-content flex-1 text-center">
+    <img class="rounded-md mb" src="./images/stand.webp" />
+    こうしたい時もあるかもしれない
+  </div>
+</div>
+
+---
+
+# 背面ディスプレイ対応（サブディスプレイモード）
+
+開いた状態から背面ディスプレイにActivityを移動する（or 両画面を使う）API
+
+<div class="flex justify-content items-center">
+  <img class="h-80" src="./images/rear_display_dialog.png" />
+  <div class="ml-4">
+    主にカメラアプリで背面セルフィーをするときに使われる
+    この機能を使わないと、端末を開く/閉じる判定により勝手に画面が消えてしまう
+  </div>
+</div>
+
+https://developer.android.com/develop/ui/compose/layouts/adaptive/foldables/support-foldable-display-modes
+
+---
+
+# 準備
+
+```kotlin
+  // サブディスプレイに切り替えるための起点となるController
+  private lateinit var windowAreaController: WindowAreaController
+
+  // サブディスプレイモード切り替え時に渡すexector
+  private lateinit var displayExecutor: Executor
+
+  // Foldable特有の機能が使用可能か、などの情報にアクセスするための `WindowAreaSession` を持つオブジェクト
+  private var windowAreaInfo: WindowAreaInfo? = null
+
+  // 後述のoperationが利用可能か、あるいは今どのような状態かを示す変数
+  private var capabilityStatus: WindowAreaCapability.Status =
+      WindowAreaCapability.Status.WINDOW_AREA_STATUS_UNSUPPORTED
+
+  // サブディスプレイモードを表すoperation
+  private val rearDisplayOperation = WindowAreaCapability.Operation.OPERATION_TRANSFER_ACTIVITY_TO_AREA
+```
+
+---
+
+# 画面状態の取得・検知
+
+```kotlin
+    // onCreate内
+    displayExecutor = ContextCompat.getMainExecutor(this)
+    windowAreaController = WindowAreaController.getOrCreate()
+    lifecycleScope.launch(Dispatchers.Main) {
+        // 現在の画面の状態やサブディスプレイモードが利用可能かどうかを監視する
+        lifecycle.repeatOnLifecycle(Lifecycle.State.STARTED) {
+            windowAreaController.windowAreaInfos
+                .map { info -> info.firstOrNull { it.type == WindowAreaInfo.Type.TYPE_REAR_FACING } }
+                .onEach { info -> windowAreaInfo = info }
+                .map { 
+                  it?.getCapability(rearDisplayOperation)?.status
+                    ?: WindowAreaCapability.Status.WINDOW_AREA_STATUS_UNSUPPORTED
+                }
+                .distinctUntilChanged()
+                .collect {
+                    capabilityStatus = it
+                }
+        }
+    }
+```
+
+---
+
+# サブディスプレイモードの起動
+
+```kotlin
+// サブディスプレイモードをアクティブにするボタンを押したときの処理
+onTapSwitchDisplay = {
+    when(capabilityStatus) {
+        WindowAreaCapability.Status.WINDOW_AREA_STATUS_AVAILABLE -> {
+            windowAreaInfo?.token?.let { token ->
+                windowAreaController.transferActivityToWindowArea(
+                    token = token,
+                    activity = this,
+                    executor = displayExecutor,
+                    windowAreaSessionCallback = this
+                )
+            }
+        }
+        WindowAreaCapability.Status.WINDOW_AREA_STATUS_ACTIVE -> {
+            val windowAreaSession = windowAreaInfo?.getActiveSession(rearDisplayOperation)
+            windowAreaSession?.close()
+        }
+        else -> {
+        }
+    }
+}
+```
+
+---
+layout: center
+---
+
+# 結果
+
+<video controls class="h-100" src="./images/rotation_reversed.mp4" type="video/mp4">
+</video>
+
+---
+
+# 🤔
+
+横向きにした時、画面が逆向きになっている
+
+→ 一旦、画面回転したときに**描画を逆向きにしてみる**
+
+```kotlin
+  override fun onConfigurationChanged(newConfig: Configuration) {
+      super.onConfigurationChanged(newConfig)
+      val isLandscape = newConfig.orientation == Configuration.ORIENTATION_LANDSCAPE
+      
+      if (isSidewaysRotated != isLandscape) {
+          isSidewaysRotated = isLandscape
+          if (MarkdownEditorApplication.isRearDisplay) {
+              window.decorView.rotation = if (isLandscape) 180f else 0f
+          }
+      }
+  }
+```
+
+（本当は `requestedOrientation` でやりたかったけど、画面の向きの判定が追加で必要でLTのボリュームが増えそうだったので一旦これで）
+
+---
+layout: center
+---
+
+# 結果再び
+
+<video controls class="h-100" src="./images/rotation_correctly.mp4" type="video/mp4">
+</video>
+
+---
+
+# Done
+
+とりあえずやりたいことができた 🎉
+
+### 伝えたいこと（再掲）
+
+- Foldable対応を考える時、まずはAdaptive Layoutの検討をしよう
+- Foldable端末の画面状態を取得できるAPIがある
+  - 必要なら活用しよう
+  - （触れてないけど、半開きの状態か開いている状態か、とかも取得できる）
+- 端末を開いた状態でサブディスプレイのみを使う事ができる
+  - 両方の画面を使うこともできる
+- 画面回転を考慮しよう

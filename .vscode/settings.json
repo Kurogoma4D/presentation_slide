@@ -3,5 +3,6 @@
     {
       "file": "docs/syntax.md"
     }
-  ]
+  ],
+  "slidev.dev-command": "pnpm run dev"
 }
