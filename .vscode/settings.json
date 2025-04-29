@@ -4,5 +4,15 @@
       "file": "docs/syntax.md"
     }
   ],
+  "markdownlint.config": {
+    "html": false,
+    "MD025": false,
+    "heading-style": false,
+    "blanks-around-headings": false,
+    "no-alt-text": false,
+    "no-trailing-punctuation": false,
+    "no-duplicate-heading": false,
+    "no-bare-urls": false
+  },
   "slidev.dev-command": "pnpm run dev"
 }
