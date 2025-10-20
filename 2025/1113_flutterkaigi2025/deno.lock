@@ -4,6 +4,7 @@
     "npm:@slidev/cli@^52.3.0": "52.3.0_typescript@5.9.3_vite@7.1.11__jiti@2.6.1__yaml@2.8.1__picomatch@4.0.3_vue@3.5.22__typescript@5.9.3_markdown-it@14.1.0_shiki@3.13.0_jiti@2.6.1_yaml@2.8.1",
     "npm:@slidev/theme-default@latest": "0.25.0",
     "npm:@slidev/theme-seriph@latest": "0.25.0",
+    "npm:slidev-theme-dracula@0.2": "0.2.0",
     "npm:vue@^3.5.22": "3.5.22_typescript@5.9.3"
   },
   "npm": {
@@ -932,6 +933,9 @@
         "codemirror-theme-vars",
         "prism-theme-vars"
       ]
+    },
+    "@slidev/types@0.42.11": {
+      "integrity": "sha512-K7+UWzEQpUe3eEFs7ktm3tw17Ke9ZOJPTy7yGSlZfWl4jCTf9Z0HNKECPLQ3JGL6EkJ4Wyy1y0HE92/20cTn0Q=="
     },
     "@slidev/types@0.47.5": {
       "integrity": "sha512-X67V4cCgM0Sz50bP8GbVzmiL8DHC2IXvdKcsN7DlxHyf+/T4d9GveeGukwha5Fx3MuYeGZWKag7TFL2ZY4w54A=="
@@ -3481,6 +3485,15 @@
     "sisteransi@1.0.5": {
       "integrity": "sha512-bLGGlR1QxBcynn2d5YmDX4MGjlZvy2MRBDRNHLJ8VI6l6+9FUiyTFNJ0IveOSP0bcXgVDPRcfGqA0pjaqUpfVg=="
     },
+    "slidev-theme-dracula@0.2.0": {
+      "integrity": "sha512-ndMD27+gUNYt9aXrb4/0vSBHKP007mpD2eCJppzhqXDG1DmN0Q6I6iFz+QvIjOPDKzzPjoYZbsWp6lPLJjgs9g==",
+      "dependencies": [
+        "@slidev/types@0.42.11",
+        "codemirror-theme-vars",
+        "prism-theme-vars",
+        "theme-vitesse"
+      ]
+    },
     "source-map-js@1.2.1": {
       "integrity": "sha512-UXWMKhLOwVKb728IUtQPXxfYU+usdybtUrK/8uGE8CQMvrhOpwvzDBwj0QhSL7MQc7vIsISBG8VQ8+IDQxpfQA=="
     },
@@ -3563,6 +3576,9 @@
         "function-timeout",
         "time-span"
       ]
+    },
+    "theme-vitesse@0.7.9": {
+      "integrity": "sha512-wgxHWOIEcIBp/5MAdO8Z5c0vdKy5J5008Kqt/uOYruel9oJ4TrvH3qXgCsatp4ImROd1UWsIgQ3C0R8db38qgA=="
     },
     "time-span@5.1.0": {
       "integrity": "sha512-75voc/9G4rDIJleOo4jPvN4/YC4GRZrY8yy1uU4lwrB3XEQbWve8zXoO5No4eFrGcTAMYyoY67p8jRQdtA1HbA==",
@@ -4048,6 +4064,7 @@
         "npm:@slidev/cli@^52.3.0",
         "npm:@slidev/theme-default@latest",
         "npm:@slidev/theme-seriph@latest",
+        "npm:slidev-theme-dracula@0.2",
         "npm:vue@^3.5.22"
       ]
     }
