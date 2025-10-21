@@ -283,3 +283,15 @@ layout: two-cols
   <div class="text-center font-bold text-xl mb-4">リファラー付き</div>
   <video controls src="./images/scrapto-referrer.webm" class="h-100 rounded-3xl"></video>
 </div>
+
+---
+layout: center
+---
+
+# おまけ
+
+Sun Asteriskをよろしくお願いします！
+
+https://job.persona-ats.com/ja/sun-asterisk/jobs/735dd277-54f4-4ed8-97eb-a3738683df6b
+
+<img src="./images/hire.png" class="h-50 rounded-xl" />
