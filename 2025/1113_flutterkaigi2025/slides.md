@@ -32,24 +32,51 @@ mdc: true
 </div>
 
 ---
-transition: fade-out
+transition: none
 ---
 
 # 皆さんに質問です
 
 <div class="mt-12 space-y-8">
-  <div class="text-xl">
+  <div class="text-2xl">
+    🙋 <span class="text-yellow-400 font-bold">普段Flutterで開発していますか？</span>
+  </div>
+</div>
+
+---
+transition: none
+---
+
+# 皆さんに質問です
+
+<div class="mt-12 space-y-8">
+  <div class="text-2xl">
     🙋 <span class="text-yellow-400 font-bold">普段Flutterで開発していますか？</span>
   </div>
 
-  <div class="text-xl mt-8">
+  <div class="text-2xl mt-8">
+    🙋 <span class="text-green-400 font-bold">ネイティブアプリ・ガワアプリをFlutterにリプレイスしたことはありますか？</span>
+  </div>
+</div>
+
+---
+
+# 皆さんに質問です
+
+<div class="mt-12 space-y-8">
+  <div class="text-2xl">
+    🙋 <span class="text-yellow-400 font-bold">普段Flutterで開発していますか？</span>
+  </div>
+
+  <div class="text-2xl mt-8">
     🙋 <span class="text-green-400 font-bold">ネイティブアプリ・ガワアプリをFlutterにリプレイスしたことはありますか？</span>
   </div>
 
-  <div class="text-xl mt-8">
+  <div class="text-2xl mt-8">
     🙋 <span class="text-red-400 font-bold">逆にFlutterアプリをネイティブアプリ・その他フレームワークにリプレイスした方は？</span>
   </div>
 </div>
+
 
 ---
 transition: fade-out
@@ -58,33 +85,21 @@ layout: center
 
 # 今日は技術選定の話をします
 
-特に<span class="text-yellow-400 font-bold">「Flutterの採用が視野に入っているとき」</span>に<br>
+<div class="text-2xl">
+特に<span class="text-yellow-400 font-bold">「Flutterの採用が視野に入っているとき」</span>に
 考えるべきことについて
+</div>
 
----
-transition: fade-out
 ---
 
 # 昨今のFlutterを取り巻く声
 
 <div class="mt-12 space-y-8">
-  <div class="text-xl">
-    「Flutterは終わった」<br>
-    「メンテナンスされていない」<br>
-    「新規プロジェクトでは選ぶべきではない」
-  </div>
-
-  <div class="mt-12 text-lg opacity-75">
-    参考: <a href="https://x.com/vibetushar/status/1939762052173897744" target="_blank" class="text-blue-400">@vibetushar のポスト</a>
-  </div>
-
-  <div class="mt-12 text-xl text-yellow-400">
-    実はこういった声は昔からずっとある...
-  </div>
+  <img src="./images/flutter-is-dead.jpeg" class="h-80 mx-auto">
+  <div class="mt-12 text-xl opacity-75">https://x.com/vibetushar/status/1939762052173897744</div>
 </div>
 
 ---
-transition: fade-out
 layout: center
 ---
 
@@ -103,7 +118,6 @@ layout: center
 </div>
 
 ---
-transition: fade-out
 layout: center
 ---
 
@@ -112,21 +126,19 @@ layout: center
 ## アーキテクチャ上の特徴
 
 ---
-transition: fade-out
----
 
 # Flutterのアーキテクチャ上の特徴
 
 <div class="mt-12 space-y-8">
-  <div class="text-xl">
+  <div class="text-2xl">
     Flutterは<span class="text-red-400 font-bold">ネイティブのUI要素を描画しない</span>
   </div>
 
-  <div class="text-lg mt-8">
+  <div class="text-xl mt-8">
     つまり、プラットフォーム上のUIの変化についていけない
   </div>
 
-  <div class="mt-12 text-xl">
+  <div class="mt-12 text-2xl">
     <div class="mb-4">例えば:</div>
     <div class="ml-8 space-y-2">
       <div>• iOSの新しいLiquid Glassデザイン</div>
@@ -137,106 +149,95 @@ transition: fade-out
 </div>
 
 ---
-transition: fade-out
----
 
 # でも、ちょっと待って
 
 <div class="mt-12 space-y-8">
-  <div class="text-xl text-yellow-400">
-    プラットフォームのUIの変化は<br>
-    <span class="font-bold">誰もが望むものだろうか？</span>
+  <div class="text-2xl text-yellow-400">
+    プラットフォームのUIの変化は<span class="font-bold">誰もが望むものだろうか？</span>
   </div>
 
-  <div class="mt-12 text-lg">
+  <div class="mt-12 text-xl">
     • アプリ開発者や一部のユーザーにとっては嬉しいかもしれない<br>
     • 最新のプラットフォーム事情に追従できることは魅力的
-  </div>
-
-  <div class="mt-12 text-xl text-green-400">
-    しかし、<span class="font-bold">Flutter</span>は単なる「iOS/Androidをターゲットにした<br>
-    クロスプラットフォームフレームワーク」ではない
   </div>
 </div>
 
 ---
-transition: fade-out
-layout: center
+
+# しかし
+
+<div class="h-100 text-2xl text-center flex items-center justify-center">
+  Flutterは単なる<br>
+  「iOS/Androidをターゲットにしたクロスプラットフォームフレームワーク」<br>
+  ではない
+</div>
+
+
 ---
 
 # Flutterとは
 
-<div class="mt-12 text-3xl text-center">
-  <span class="text-yellow-400 font-bold">プラットフォームへの統合が容易な<br>UIツールキット</span>
+<div class="h-100 text-4xl text-center flex items-center justify-center">
+  <span class="text-red-400 font-bold">プラットフォームへの統合が容易な<br>UIツールキット</span>
 </div>
 
----
-transition: fade-out
 ---
 
 # Flutterを採用したとき
 
 <div class="mt-12 space-y-8">
-  <div class="text-xl">
-    OSの世界観をそのまま引き継がずに<br>
-    <span class="text-yellow-400 font-bold">プロダクト独自のUI</span>を構築することは<br>
+  <div class="text-2xl">
+    OSの世界観をそのまま引き継がずに<span class="text-yellow-400 font-bold">プロダクト独自のUI</span>を構築することは<br>
     ほぼ既定路線である
   </div>
 
-  <div class="mt-12 text-lg">
-    <div class="font-bold mb-4">これは嬉しくない組織もあるが...</div>
-    <div class="ml-8 text-green-400">
-      <span class="font-bold">逆に嬉しい組織もあるのでは？</span>
+  <div class="mt-12 text-xl">
+    <div class="font-bold mb-4">これは嬉しくない組織もあるが
+      <span class="text-green-400 font-bold">逆に嬉しい組織もあるのでは？</span>
     </div>
   </div>
 
-  <div class="mt-12 text-lg border-2 border-blue-500 p-6 rounded-lg">
-    <div class="font-bold mb-2">例えば:</div>
+  <div class="mt-12 text-xl border-2 border-blue-500 p-6 rounded-lg">
+    <div class="font-bold mb-2">例えば</div>
     あるWebサービス上で独自の世界観を築き上げている中で、<br>
     モバイルアプリを新規開発したいパターンなど
   </div>
 </div>
 
 ---
-transition: fade-out
----
 
 # プラットフォームUIの採用について
 
 <div class="mt-12 space-y-8">
-  <div class="text-lg">
-    自分としては、<span class="text-yellow-400">ネイティブでの実装にしろ、<br>
-    React Native他フレームワークを使うにしろ</span>...
-  </div>
+  <div class="text-xl">ネイティブでの実装にしろ、React Native他フレームワークを使うにしろ</div>
 
-  <div class="mt-8 text-xl text-center border-2 border-purple-500 p-8 rounded-lg">
+  <div class="mt-8 text-2xl text-center border-2 border-purple-500 p-8 rounded-lg">
     AndroidでMaterial、<br>
     iOSでLiquid Glassを採用しない以上は<br>
     <span class="text-green-400 font-bold">UIに対する姿勢はどれも変わらない</span>
   </div>
 
-  <div class="mt-12 text-lg">
-    プラットフォームの世界観を重視するなら、<br>
-    <span class="text-blue-400 font-bold">SwiftUIやJetpack Compose</span>を選んだほうが<br>
+  <div class="mt-12 text-xl">
+    プラットフォームの世界観を重視するなら、
+    <span class="text-blue-400 font-bold">SwiftUI</span>や<span class="text-blue-400 font-bold">Jetpack Compose</span>を選んだほうが<br>
     幸せになれるかもしれない
   </div>
 </div>
 
 ---
-transition: fade-out
----
 
 # つまり
 
 <div class="mt-12 space-y-8">
-  <div class="text-xl text-center border-2 border-yellow-500 p-8 rounded-lg">
+  <div class="text-2xl text-center border-2 border-yellow-500 p-8 rounded-lg">
     アーキテクチャの点で不安になるということは<br>
-    <span class="text-yellow-400 font-bold text-2xl">現在の開発チームと技術が<br>ハマっていない</span><br>
+    <span class="text-yellow-400 font-bold text-3xl">現在の開発チームと技術が<br>ハマっていない</span><br>
     ということ
   </div>
 
-  <div class="mt-12 text-lg">
-    <div class="font-bold mb-4">重要なのは:</div>
+  <div class="mt-12 text-xl">
+    <div class="font-bold mb-4">重要なのは</div>
     <div class="ml-8">
       • OSの世界観を大事にしたいのか？<br>
       • プロダクト独自の世界観を構築したいのか？<br>
@@ -246,7 +247,6 @@ transition: fade-out
 </div>
 
 ---
-transition: fade-out
 layout: center
 ---
 
@@ -255,36 +255,32 @@ layout: center
 ## メンテナー問題
 
 ---
-transition: fade-out
----
 
 # メンテナー問題とは
 
 <div class="mt-12 space-y-8">
-  <div class="text-xl">
+  <div class="text-2xl">
     Flutterリポジトリには<span class="text-red-400 font-bold">大量のissue</span>がある
   </div>
 
-  <div class="text-lg mt-8">
+  <div class="text-xl mt-8">
     • issueやPRを上げてもなかなか進まない<br>
     • メンテナーが不足している？<br>
     • 本当に継続的にメンテナンスされているのか？
   </div>
 
-  <div class="mt-12 text-xl text-yellow-400">
+  <div class="mt-12 text-2xl text-yellow-400">
     これに関しては<span class="font-bold">難しい問題</span>
   </div>
 </div>
 
 ---
-transition: fade-out
----
 
 # でも、考えてみよう
 
 <div class="mt-12 space-y-8">
-  <div class="text-xl">
-    <div class="mb-4">事実として:</div>
+  <div class="text-2xl">
+    <div class="mb-4">事実として</div>
     <div class="ml-8 space-y-3">
       <div>• Flutterリポジトリには<span class="text-yellow-400 font-bold">かなりの数のissue</span>がある</div>
       <div>• 優先度付けもされている</div>
@@ -292,56 +288,47 @@ transition: fade-out
     </div>
   </div>
 
-  <div class="mt-12 text-lg border-2 border-blue-500 p-6 rounded-lg">
+  <div class="mt-12 text-xl border-2 border-blue-500 p-6 rounded-lg">
     すべてのissueが同じ速度で対応されるわけではない<br>
     これは<span class="text-blue-400 font-bold">どのOSSプロジェクトでも同じ</span>
   </div>
 </div>
 
 ---
-transition: fade-out
----
 
 # 我々にできること
 
 <div class="mt-12 space-y-8">
-  <div class="text-xl text-center text-yellow-400 font-bold">
+  <div class="text-2xl text-center text-yellow-400 font-bold">
     コントリビュートすればいい
   </div>
 
-  <div class="mt-12 text-lg">
-    <div class="mb-4">参考:</div>
-    <div class="ml-8">
-      kojiさんのセッション<br>
-      <span class="text-green-400 font-bold">「Flutterコントリビューションのススメ」</span><br>
-      でモチベーションや方法論について言及されている
-    </div>
+  <div class="mt-12 text-xl">
+      この辺はkojiさんのセッション<span class="text-green-400">「Flutterコントリビューションのススメ」</span>でもモチベーションや方法論について言及している<br>
   </div>
 
-  <div class="mt-12 text-lg border-2 border-purple-500 p-6 rounded-lg">
+  <div class="mt-12 text-xl border-2 border-purple-500 p-6 rounded-lg">
     issueやフォーラムでの議論も大事だが、<br>
     <span class="text-purple-400 font-bold">実際にPRを提示するのも同じくらい大事</span>
   </div>
 </div>
 
 ---
-transition: fade-out
----
 
 # Flutterのテストカバレッジ
 
 <div class="mt-12 space-y-8">
-  <div class="text-xl">
-    Flutter本体は<span class="text-green-400 font-bold">テストコードが充実</span>している
+  <div class="text-2xl">
+    特にFlutter本体は<span class="text-green-400 font-bold">テストコードが充実</span>している
   </div>
 
-  <div class="mt-8 text-lg">
+  <div class="mt-8 text-xl">
     <div class="mb-4">• ユニットテスト</div>
     <div class="mb-4">• 統合テスト</div>
     <div class="mb-4">• E2Eテスト</div>
   </div>
 
-  <div class="mt-12 text-xl text-center border-2 border-green-500 p-8 rounded-lg">
+  <div class="mt-12 text-2xl text-center border-2 border-green-500 p-8 rounded-lg">
     振る舞い的な正しさは<span class="text-green-400 font-bold">テストでかなり担保できる</span>
   </div>
 </div>
@@ -353,22 +340,18 @@ transition: fade-out
 # 自分たちでコントロールできる
 
 <div class="mt-12 space-y-8">
-  <div class="text-xl">
+  <div class="text-2xl">
     もしもFlutterに不具合があれば<br>
     <span class="text-yellow-400 font-bold">自分たちのコントロールできる範疇で対応可能</span>
   </div>
 
-  <div class="mt-12 text-lg">
-    <div class="font-bold mb-4">今のところ:</div>
-    <div class="ml-8">
-      不具合レベルで解消されないから<br>
-      <span class="text-red-400">致命的にアプリ開発ができない</span><br>
-      みたいなものは無いと思う
-    </div>
+  <div class="mt-12 text-xl">
+    今のところ<br>
+    解消されていない不具合で<span class="text-red-400">致命的にアプリ開発ができない</span>みたいなものは無い（個人の感想）
   </div>
 
-  <div class="mt-12 text-lg border-2 border-yellow-500 p-6 rounded-lg">
-    <span class="text-yellow-400 font-bold">仮にそのようなものがあれば</span>、<br>
+  <div class="mt-12 text-xl border-2 border-yellow-500 p-6 rounded-lg">
+    <span class="text-yellow-400 font-bold">仮にそのようなものがあるとしたとき</span><br>
     どちらかと言うと<br>
     アーキテクチャ上やりたいことと噛み合っていない可能性がある
   </div>
@@ -388,15 +371,15 @@ transition: fade-out
 # Flutter is NOT DEAD.
 
 <div class="mt-12 space-y-8">
-  <div class="text-2xl text-center text-yellow-400 font-bold">
+  <div class="text-3xl text-center text-yellow-400 font-bold">
     Flutterは別にまだ死んではいない
   </div>
 
-  <div class="mt-12 text-xl">
-    重要なのは:
+  <div class="mt-12 text-2xl">
+    重要なのは
   </div>
 
-  <div class="mt-8 text-lg border-2 border-green-500 p-8 rounded-lg">
+  <div class="mt-8 text-xl border-2 border-green-500 p-8 rounded-lg">
     <div class="text-center">
       「このプロジェクトで<span class="text-green-400 font-bold">やりたいことがある</span>」<br>
       ↓<br>
@@ -404,7 +387,7 @@ transition: fade-out
     </div>
   </div>
 
-  <div class="mt-12 text-lg text-center">
+  <div class="mt-12 text-xl text-center">
     技術は<span class="text-yellow-400 font-bold">目的を達成するための手段</span><br>
     目的に合った技術を選ぶことが大事
   </div>
@@ -424,11 +407,11 @@ transition: fade-out
 # Q. LLM（AI）エージェントはTypeScriptのほうが優れてますよね？
 
 <div class="mt-12 space-y-8">
-  <div class="text-xl">
+  <div class="text-2xl">
     A. <span class="text-yellow-400">そうかもしれない</span>
   </div>
 
-  <div class="mt-8 text-lg">
+  <div class="mt-8 text-xl">
     しかし、エージェントが犯す
     <span class="text-blue-400 font-bold">TypeScriptの記述ミス</span>と<span class="text-green-400 font-bold">Dartの記述ミス</span>に、
     <span class="text-red-400 font-bold">致命的な差はあるか？</span>
@@ -442,17 +425,17 @@ transition: fade-out
 # 結局やることは同じ
 
 <div class="mt-12 space-y-8">
-  <div class="text-xl">
-    エージェントがエラーを出したら:
+  <div class="text-2xl">
+    エージェントがエラーを出したら
   </div>
 
-  <div class="mt-8 text-lg">
+  <div class="mt-8 text-xl">
     <div class="mb-4">1. エージェントに<span class="text-yellow-400 font-bold">追加のコンテキスト</span>を与えて修正してもらう</div>
     <div class="mb-4">または</div>
     <div class="mb-4">2. <span class="text-green-400 font-bold">自分の手で直す</span></div>
   </div>
 
-  <div class="mt-12 text-3xl text-center border-2 border-purple-500 p-8 rounded-lg">
+  <div class="mt-12 text-4xl text-center border-2 border-purple-500 p-8 rounded-lg">
     <span class="text-purple-400 font-bold">そう、導くのはキミだ</span>
   </div>
 </div>
@@ -473,43 +456,22 @@ transition: fade-out
 <div class="mt-12 space-y-6">
   <div class="border-2 border-blue-500 p-6 rounded-lg">
     <div class="font-bold text-xl mb-2 text-blue-400">1. アーキテクチャの特徴</div>
-    <div class="text-lg">
-      プロダクト独自のUIを構築したいならFlutterは良い選択肢<br>
-      OSの世界観を重視するなら別の選択肢を検討すべき
+    <div class="text-xl">
+      プロダクト独自のUIを構築したいならFlutterは良い選択肢
     </div>
   </div>
 
   <div class="border-2 border-purple-500 p-6 rounded-lg">
     <div class="font-bold text-xl mb-2 text-purple-400">2. メンテナー問題</div>
-    <div class="text-lg">
-      コントリビュートによって自分たちでコントロールできる<br>
-      致命的な問題は今のところ見当たらない
+    <div class="text-xl">
+      コントリビュートによって自分たちでコントロールできる
     </div>
   </div>
 
   <div class="border-2 border-green-500 p-6 rounded-lg">
     <div class="font-bold text-xl mb-2 text-green-400">3. 技術選定の本質</div>
-    <div class="text-lg">
-      「何をしたいか」から「何を使うか」を決める<br>
-      技術は目的を達成するための手段
+    <div class="text-xl">
+      「何をしたいか」から「何を使うか」を決める
     </div>
   </div>
-</div>
-
----
-layout: center
----
-
-# ご清聴ありがとうございました
-
-<div class="mt-12">
-  <div class="text-xl">Kurogoma4D</div>
-  <div class="text-lg opacity-75">@Krgm4D</div>
-</div>
-
-<div class="abs-br m-6 flex gap-2">
-  <a href="https://github.com/Kurogoma4D" target="_blank" alt="GitHub"
-    class="text-xl slidev-icon-btn opacity-50 !border-none !hover:text-white">
-    <carbon-logo-github />
-  </a>
 </div>
