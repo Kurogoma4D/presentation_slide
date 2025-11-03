@@ -1,9 +1,10 @@
 {
   "version": "5",
   "specifiers": {
-    "npm:@slidev/cli@^52.3.0": "52.3.0_typescript@5.9.3_vite@7.1.11__jiti@2.6.1__yaml@2.8.1__picomatch@4.0.3_vue@3.5.22__typescript@5.9.3_markdown-it@14.1.0_shiki@3.13.0_jiti@2.6.1_yaml@2.8.1",
+    "npm:@slidev/cli@^52.3.0": "52.3.0_typescript@5.9.3_vite@7.1.11__jiti@2.6.1__yaml@2.8.1__picomatch@4.0.3_vue@3.5.22__typescript@5.9.3_markdown-it@14.1.0_shiki@3.13.0_jiti@2.6.1_yaml@2.8.1_playwright-chromium@1.56.1",
     "npm:@slidev/theme-default@latest": "0.25.0",
     "npm:@slidev/theme-seriph@latest": "0.25.0",
+    "npm:playwright-chromium@^1.56.1": "1.56.1",
     "npm:slidev-theme-dracula@0.2": "0.2.0",
     "npm:vue@^3.5.22": "3.5.22_typescript@5.9.3"
   },
@@ -861,6 +862,86 @@
         "vue",
         "yaml",
         "yargs"
+      ],
+      "bin": true
+    },
+    "@slidev/cli@52.3.0_typescript@5.9.3_vite@7.1.11__jiti@2.6.1__yaml@2.8.1__picomatch@4.0.3_vue@3.5.22__typescript@5.9.3_markdown-it@14.1.0_shiki@3.13.0_jiti@2.6.1_yaml@2.8.1_playwright-chromium@1.56.1": {
+      "integrity": "sha512-QVTf/X83PyusN1gbkv3DR5YZDcneAGu6fLUtlKwF4Aym2LVoGzJ1eAlGFBg50vfpUIFl7E3m1s+QCCV8crLCcQ==",
+      "dependencies": [
+        "@antfu/ni",
+        "@antfu/utils",
+        "@iconify-json/carbon",
+        "@iconify-json/ph",
+        "@iconify-json/svg-spinners",
+        "@lillallol/outline-pdf",
+        "@shikijs/markdown-it",
+        "@shikijs/twoslash",
+        "@shikijs/vitepress-twoslash",
+        "@slidev/client",
+        "@slidev/parser",
+        "@slidev/types@52.3.0_vite@7.1.11__jiti@2.6.1__yaml@2.8.1__picomatch@4.0.3_vue@3.5.22__typescript@5.9.3_typescript@5.9.3_jiti@2.6.1_yaml@2.8.1",
+        "@unocss/extractor-mdc",
+        "@unocss/reset",
+        "@vitejs/plugin-vue",
+        "@vitejs/plugin-vue-jsx",
+        "ansis",
+        "chokidar@4.0.3",
+        "cli-progress",
+        "connect",
+        "debug@4.4.3",
+        "fast-deep-equal",
+        "fast-glob",
+        "get-port-please",
+        "global-directory",
+        "htmlparser2",
+        "is-installed-globally",
+        "jiti",
+        "katex",
+        "local-pkg",
+        "lz-string",
+        "magic-string",
+        "magic-string-stack",
+        "markdown-it",
+        "markdown-it-footnote",
+        "markdown-it-mdc",
+        "mlly",
+        "monaco-editor",
+        "open",
+        "pdf-lib",
+        "picomatch@4.0.3",
+        "plantuml-encoder",
+        "playwright-chromium",
+        "postcss-nested",
+        "pptxgenjs",
+        "prompts",
+        "public-ip",
+        "resolve-from",
+        "resolve-global",
+        "semver@7.7.3",
+        "shiki",
+        "shiki-magic-move",
+        "sirv",
+        "source-map-js",
+        "typescript",
+        "unhead",
+        "unocss",
+        "unplugin-icons",
+        "unplugin-vue-components",
+        "unplugin-vue-markdown",
+        "untun",
+        "uqr",
+        "vite",
+        "vite-plugin-inspect",
+        "vite-plugin-remote-assets",
+        "vite-plugin-static-copy",
+        "vite-plugin-vue-server-ref",
+        "vitefu",
+        "vue",
+        "yaml",
+        "yargs"
+      ],
+      "optionalPeers": [
+        "playwright-chromium"
       ],
       "bin": true
     },
@@ -3215,6 +3296,18 @@
     "plantuml-encoder@1.4.0": {
       "integrity": "sha512-sxMwpDw/ySY1WB2CE3+IdMuEcWibJ72DDOsXLkSmEaSzwEUaYBT6DWgOfBiHGCux4q433X6+OEFWjlVqp7gL6g=="
     },
+    "playwright-chromium@1.56.1": {
+      "integrity": "sha512-5TU+NMrofQg2j+DwIaQL/9eC84hs5YGz5Wng8OOdgq+kmu8usPLedxx2pJJ1Pb2TNFNiz3167RsUNFFvY3srNA==",
+      "dependencies": [
+        "playwright-core"
+      ],
+      "scripts": true,
+      "bin": true
+    },
+    "playwright-core@1.56.1": {
+      "integrity": "sha512-hutraynyn31F+Bifme+Ps9Vq59hKuUCz7H1kDOcBs+2oGguKkWTU50bBWrtz34OUWmIwpBTWDxaRPXrIXkgvmQ==",
+      "bin": true
+    },
     "points-on-curve@0.2.0": {
       "integrity": "sha512-0mYKnYYe9ZcqMCWhUjItv/oHjvgEsfKvnUTg8sAtnHr3GVy7rGkXCb6d5cSyqrWqL4k81b9CPg3urd+T7aop3A=="
     },
@@ -4064,6 +4157,7 @@
         "npm:@slidev/cli@^52.3.0",
         "npm:@slidev/theme-default@latest",
         "npm:@slidev/theme-seriph@latest",
+        "npm:playwright-chromium@^1.56.1",
         "npm:slidev-theme-dracula@0.2",
         "npm:vue@^3.5.22"
       ]

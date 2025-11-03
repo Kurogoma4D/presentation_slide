@@ -139,11 +139,11 @@ layout: center
   </div>
 
   <div class="mt-12 text-2xl">
-    <div class="mb-4">例えば:</div>
+    <div class="mb-4">例えば</div>
     <div class="ml-8 space-y-2">
       <div>• iOSの新しいLiquid Glassデザイン</div>
       <div>• AndroidのMaterial Designの進化</div>
-      <div>• 新しいシステムコンポーネント</div>
+      <div>• その他新しいシステムコンポーネント</div>
     </div>
   </div>
 </div>
@@ -165,7 +165,7 @@ layout: center
 
 ---
 
-# しかし
+# 見方を変えてみる
 
 <div class="h-100 text-2xl text-center flex items-center justify-center">
   Flutterは単なる<br>
@@ -176,10 +176,21 @@ layout: center
 
 ---
 
-# Flutterとは
+# Flutterを
 
 <div class="h-100 text-4xl text-center flex items-center justify-center">
-  <span class="text-red-400 font-bold">プラットフォームへの統合が容易な<br>UIツールキット</span>
+  <span class="text-red-400 font-bold">プラットフォームへの統合が容易な<br>UIツールキット<br>
+    <span class="text-2xl text-white">として見たらどうか？</span>
+  </span>
+</div>
+
+---
+
+# これは公式サイトにも書かれている
+
+<div class="mt-12 space-y-8">
+  <img src="./images/flutter-is-ui-toolkit.png" class="h-80 mx-auto">
+  <div class="mt-12 text-xl opacity-75">https://flutter.dev/learn</div>
 </div>
 
 ---
@@ -264,7 +275,7 @@ layout: center
   </div>
 
   <div class="text-xl mt-8">
-    • issueやPRを上げてもなかなか進まない<br>
+    • issueやPRを上げてもなかなか進まないという話はどうしても挙がる<br>
     • メンテナーが不足している？<br>
     • 本当に継続的にメンテナンスされているのか？
   </div>
@@ -276,14 +287,14 @@ layout: center
 
 ---
 
-# でも、考えてみよう
+# 実際のところ
 
 <div class="mt-12 space-y-8">
   <div class="text-2xl">
-    <div class="mb-4">事実として</div>
     <div class="ml-8 space-y-3">
-      <div>• Flutterリポジトリには<span class="text-yellow-400 font-bold">かなりの数のissue</span>がある</div>
-      <div>• 優先度付けもされている</div>
+      <div>• 優先度付けはされている</div>
+      <div>• そのレポートもある</div>
+      <div class="ml-8">• <a href="https://github.com/flutter/flutter/wiki/2025-Issue-Triage-Reports">https://github.com/flutter/flutter/wiki/2025-Issue-Triage-Reports</a></div>
       <div>• <span class="text-green-400 font-bold">対応される速度に差はある</span></div>
     </div>
   </div>
@@ -375,10 +386,6 @@ transition: fade-out
     Flutterは別にまだ死んではいない
   </div>
 
-  <div class="mt-12 text-2xl">
-    重要なのは
-  </div>
-
   <div class="mt-8 text-xl border-2 border-green-500 p-8 rounded-lg">
     <div class="text-center">
       「このプロジェクトで<span class="text-green-400 font-bold">やりたいことがある</span>」<br>
@@ -387,9 +394,10 @@ transition: fade-out
     </div>
   </div>
 
-  <div class="mt-12 text-xl text-center">
-    技術は<span class="text-yellow-400 font-bold">目的を達成するための手段</span><br>
-    目的に合った技術を選ぶことが大事
+  <div class="mt-8 text-xl border-2 border-green-500 p-8 rounded-lg">
+    <div class="text-xl text-center">
+      更にFlutterに対して、コミュニティでやれることもまだまだある
+    </div>
   </div>
 </div>
 
@@ -432,11 +440,11 @@ transition: fade-out
   <div class="mt-8 text-xl">
     <div class="mb-4">1. エージェントに<span class="text-yellow-400 font-bold">追加のコンテキスト</span>を与えて修正してもらう</div>
     <div class="mb-4">または</div>
-    <div class="mb-4">2. <span class="text-green-400 font-bold">自分の手で直す</span></div>
+    <div class="mb-4">2. <span class="text-yellow-400 font-bold">自分の手で直す</span></div>
   </div>
 
   <div class="mt-12 text-4xl text-center border-2 border-purple-500 p-8 rounded-lg">
-    <span class="text-purple-400 font-bold">そう、導くのはキミだ</span>
+    <span class="text-purple-400 font-bold">そう、導くのはあなた</span>
   </div>
 </div>
 
@@ -445,33 +453,16 @@ transition: fade-out
 layout: center
 ---
 
-# まとめ
+# Thank you Flutter team!
 
 ---
 transition: fade-out
+layout: center
 ---
 
-# まとめ
-
-<div class="mt-12 space-y-6">
-  <div class="border-2 border-blue-500 p-6 rounded-lg">
-    <div class="font-bold text-xl mb-2 text-blue-400">1. アーキテクチャの特徴</div>
-    <div class="text-xl">
-      プロダクト独自のUIを構築したいならFlutterは良い選択肢
-    </div>
-  </div>
-
-  <div class="border-2 border-purple-500 p-6 rounded-lg">
-    <div class="font-bold text-xl mb-2 text-purple-400">2. メンテナー問題</div>
-    <div class="text-xl">
-      コントリビュートによって自分たちでコントロールできる
-    </div>
-  </div>
-
-  <div class="border-2 border-green-500 p-6 rounded-lg">
-    <div class="font-bold text-xl mb-2 text-green-400">3. 技術選定の本質</div>
-    <div class="text-xl">
-      「何をしたいか」から「何を使うか」を決める
-    </div>
+<div class="space-y-8">
+  <img src="./images/sun-qr.png" class="h-80 mx-auto">
+  <div class="mt-12 text-xl opacity-75">
+    <a href="https://sun-asterisk.com/recruitment/mid-career/">https://sun-asterisk.com/recruitment/mid-career/</a>
   </div>
 </div>
