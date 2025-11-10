@@ -17,19 +17,31 @@ mdc: true
 
 @ FlutterKaigi 2025
 
-<div class="flex items-center mt-12">
-  <img class="h-20 rounded-xl" src="./images/kurogoma_chan_2.webp" />
-  <div class="ml-12">
-    株式会社Sun Asterisk - Lead Native-app Engineer<br>X: @Krgm4D
-  </div>
-</div>
-
 <div class="abs-br m-6 flex gap-2">
   <a href="https://github.com/Kurogoma4D" target="_blank" alt="GitHub"
     class="text-xl slidev-icon-btn opacity-50 !border-none !hover:text-white">
     <carbon-logo-github />
   </a>
 </div>
+
+---
+transition: fade-out
+---
+
+# $ whoami
+
+<div class="flex items-center mt-12 mb-18">
+  <img class="h-20 rounded-xl" src="./images/kurogoma_chan_2.webp" />
+  <div class="ml-12">
+    株式会社Sun Asterisk - Lead Native-app Engineer<br>X: @Krgm4D
+  </div>
+</div>
+
+- 使ったことあるクロスプラットフォーム技術
+  - Flutter, React Native(Expo), Xamarin Forms, ちょっとKMP, ちょっと.NET MAUI
+- Jetpack ComposeやSwiftUIも好き
+  - 宣言的UIの流れを作ったReact、Flutterに感謝
+- 自作キーボード勢
 
 ---
 transition: none
@@ -134,6 +146,21 @@ layout: center
     Flutterは<span class="text-red-400 font-bold">ネイティブのUI要素を描画しない</span>
   </div>
 
+  <div class="text-center">
+    <img class="h-70 mx-auto" src="./images/archdiagram.png" />
+    https://docs.flutter.dev/resources/architectural-overview
+  </div>
+</div>
+
+---
+
+# Flutterのアーキテクチャ上の特徴
+
+<div class="mt-12 space-y-8">
+  <div class="text-2xl">
+    Flutterは<span class="text-red-400 font-bold">ネイティブのUI要素を描画しない</span>
+  </div>
+
   <div class="text-xl mt-8">
     つまり、プラットフォーム上のUIの変化についていけない
   </div>
@@ -147,6 +174,7 @@ layout: center
     </div>
   </div>
 </div>
+
 
 ---
 
