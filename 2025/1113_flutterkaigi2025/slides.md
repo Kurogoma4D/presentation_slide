@@ -397,6 +397,54 @@ transition: fade-out
 </div>
 
 ---
+layout: center
+---
+
+# Q. Flutterはどんなプロジェクトに向いてる？
+
+---
+
+# A. UIを自由自在に設計したいとき
+
+<div class="mt-24 flex gap-8 items-center">
+  <div class="text-center">
+    <div class="inline-block border-4 border-blue-500 p-8 rounded-lg">
+      <div class="text-3xl font-bold text-blue-400 mb-6">Flutter</div>
+      <div class="text-xl">UIツール<br>キット</div>
+      <div class="text-sm mt-2 opacity-75">自由なUI設計</div>
+    </div>
+  </div>
+
+  <div class="text-center text-4xl text-yellow-400">+</div>
+
+  <div class="text-center">
+    <div class="inline-block border-4 border-green-500 p-8 rounded-lg">
+      <div class="text-3xl font-bold text-green-400 mb-6">Dart</div>
+      <div class="text-xl">ロジック<br>記述</div>
+      <div class="text-sm mt-2 opacity-75">同じ言語で実装</div>
+    </div>
+  </div>
+
+  <div class="text-center text-4xl text-yellow-400">=</div>
+
+  <div class="text-center border-4 border-purple-500 p-8 rounded-lg">
+    <div class="text-2xl font-bold text-purple-400">気楽にアプリ開発</div>
+    <div class="text-lg mt-4">UI + ロジックを一貫して構築できる</div>
+  </div>
+</div>
+
+---
+
+# A. 組んだアプリを別のプラットフォームで展開したいとき
+
+  <div class="mt-12 text-2xl">
+    <div class="ml-8">
+      • KMPやフルネイティブと比較すると<span class="text-red-400 font-bold">明確な強み</span><br><br>
+      • React Nativeに関しては同じような構造なので同様のメリットを得られる<br><br>
+    </div>
+  </div>
+
+---
 transition: fade-out
 layout: center
 ---
