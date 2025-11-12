@@ -14,5 +14,8 @@
     "no-duplicate-heading": false,
     "no-bare-urls": false
   },
-  "slidev.dev-command": "pnpm run dev"
+  "slidev.dev-command": "pnpm run dev",
+  "cSpell.words": [
+    "Kurogoma"
+  ]
 }
