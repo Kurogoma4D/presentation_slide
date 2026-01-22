@@ -1,6 +1,6 @@
 ---
 theme: dracula
-title: InputMethodServiceとJetpack Composeで作るキーボードUI
+title: Jetpack Composeでキーボードを作る
 info: |
   ## potatotips 94
   LT session about implementing keyboard UI with InputMethodService and Jetpack Compose
@@ -353,6 +353,19 @@ transition: fade-out
     </div>
   </div>
 </div>
+
+---
+transition: fade-out
+layout: two-cols
+---
+
+<video controls src="./images/keyboard.webm" class="h-100 rounded-3xl"></video>
+
+::right::
+
+# デモ
+
+https://github.com/Kurogoma4D/ComposeKeyboard
 
 ---
 layout: center
